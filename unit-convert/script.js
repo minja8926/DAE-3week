@@ -4,6 +4,9 @@ const fromUnitEl = document.getElementById("fromUnit");
 const toUnitEl = document.getElementById("toUnit");
 const resultEl = document.getElementById("result");
 
+// Integer variable (requirement)
+let decimalPlaces = 4;
+
 /*
 Each category converts THROUGH a base unit.
 Length base = meter
@@ -31,7 +34,7 @@ const units = {
   },
 };
 
-// Populate dropdowns when category changes
+// Populate dropdowns
 function populateUnits() {
   const category = categoryEl.value;
   const options = units[category].options;
@@ -52,30 +55,33 @@ function convert() {
   const category = categoryEl.value;
   const value = parseFloat(valueEl.value);
 
-  if (isNaN(value)) {
-    resultEl.textContent = "";
-    return;
+  // IF/ELSE + LOGICAL OPERATOR
+  if (!isNaN(value) && value >= 0) {
+    const from = fromUnitEl.value;
+    const to = toUnitEl.value;
+    const factors = units[category].options;
+
+    // Math operations
+    const baseValue = value * factors[from];
+    const result = baseValue / factors[to];
+
+    // Output to console (requirement)
+    console.log("Conversion result:", result);
+
+    // Output to DOM
+    resultEl.textContent = `${value} ${from} = ${result.toFixed(
+      decimalPlaces
+    )} ${to}`;
+  } else {
+    resultEl.textContent = "Please enter a valid number";
   }
-
-  const from = fromUnitEl.value;
-  const to = toUnitEl.value;
-
-  const factors = units[category].options;
-
-  // Convert to base unit first
-  const baseValue = value * factors[from];
-
-  // Convert to target unit
-  const result = baseValue / factors[to];
-
-  resultEl.textContent = `${value} ${from} = ${result.toFixed(4)} ${to}`;
 }
 
-// Event listeners (auto convert)
+// Event listeners
 categoryEl.addEventListener("change", populateUnits);
 valueEl.addEventListener("input", convert);
 fromUnitEl.addEventListener("change", convert);
 toUnitEl.addEventListener("change", convert);
 
-// Initialize on load
+// Initialize
 populateUnits();

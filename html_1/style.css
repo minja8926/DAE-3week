@@ -1,0 +1,110 @@
+/* ------------------------------
+   Variables
+--------------------------------*/
+:root {
+  --accent: #4b2e2b; /* Dark Brown */
+  --bg: #f5f3ef; /* Warm background */
+  --card-bg: #ffffff; /* Card background */
+  --input-bg: #ffffff; /* Input background */
+  --border-radius: 10px;
+}
+
+/* ------------------------------
+   Body & Page
+--------------------------------*/
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  text-align: center;
+  margin-top: 60px;
+  color: #333;
+}
+
+/* ------------------------------
+   Header
+--------------------------------*/
+h1 {
+  margin-bottom: 20px;
+}
+
+/* ------------------------------
+   Converter Card
+--------------------------------*/
+.converter {
+  background: var(--card-bg);
+  padding: 20px;
+  width: 300px;
+  margin: auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid var(--accent); /* subtle accent for modern feel */
+}
+
+/* ------------------------------
+   Labels & Inputs
+--------------------------------*/
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+  text-align: left;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  background: var(--input-bg);
+  transition: border-color 0.2s, outline 0.2s;
+  font-size: 1rem;
+}
+
+/* Focus & Hover */
+input:focus,
+select:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+
+input:hover,
+select:hover {
+  border-color: var(--accent);
+}
+
+/* ------------------------------
+   From / To Row
+--------------------------------*/
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.row span {
+  color: var(--accent);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* ------------------------------
+   Result
+--------------------------------*/
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+/* ------------------------------
+   Footer (Optional)
+--------------------------------*/
+footer {
+  margin-top: 30px;
+  font-size: 0.8rem;
+  color: #666;
+}
